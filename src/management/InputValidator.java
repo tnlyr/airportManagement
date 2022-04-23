@@ -21,9 +21,9 @@ public class InputValidator {
         while (true) {
             try {
                 number = Double.parseDouble(s.nextLine());
+                return number;
             } catch (Exception e) {
                 System.out.println("Invalid input! Please try again: ");
-                ;
             }
         }
     }
