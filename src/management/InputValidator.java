@@ -16,7 +16,7 @@ public class InputValidator {
         }
     }
 
-    public double inputDouble(Scanner s){
+    public double inputDouble(Scanner s) {
         double number;
         while (true) {
             try {
