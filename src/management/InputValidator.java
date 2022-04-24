@@ -3,7 +3,7 @@ package management;
 import java.util.Scanner;
 
 public class InputValidator {
-    public int inputInt(Scanner s){
+    public int validateInt(Scanner s){
         int number;
         while (true){
             try{
@@ -15,7 +15,7 @@ public class InputValidator {
         }
     }
 
-    public double inputDouble(Scanner s) {
+    public double validateDouble(Scanner s) {
         double number;
         while (true) {
             try {
@@ -27,7 +27,7 @@ public class InputValidator {
         }
     }
 
-    public String inputString(Scanner s){
+    public String validateString(Scanner s){
         String input;
         while (true) {
             input = s.nextLine();
