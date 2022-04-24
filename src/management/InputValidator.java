@@ -39,4 +39,16 @@ public class InputValidator {
         }
     }
 
+    public String validateIata(Scanner s){
+        String input;
+        while (true) {
+            input = s.nextLine();
+            if (input.length() != 3) {
+                System.out.println("The IATA code must be 3 characters! Please try again: ");
+                continue;
+            }
+            return input;
+        }
+    }
+
 }

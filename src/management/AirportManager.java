@@ -10,9 +10,9 @@ public class AirportManager {
 
     public void createAirport(Scanner s, ArrayList<Airport> airports) {
         System.out.print("Enter airport name: ");
-        String name = s.nextLine();
+        String name = inputValidator.validateString(s);
         System.out.print("Enter airport's IATA code: ");
-        String iata = s.nextLine();
+        String iata = inputValidator.validateIata(s);
         System.out.print("Enter airport's runway length: ");
         int runwayLength = inputValidator.validateInt(s);
         System.out.print("Enter airport's airplane capacity: ");
