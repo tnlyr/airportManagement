@@ -1,4 +1,39 @@
 package entities;
 
-public class CivilianPlane {
+public class CivilianPlane extends Airplane {
+    private String type;
+    private int rwySize;
+
+    public CivilianPlane() {
+        super();
+    }
+
+    public CivilianPlane(String model, String id, int capacity, int range, int speed, double emptyWeight, double maxWeight, String type, int rwySize) {
+        super(model, id, capacity, range, speed, emptyWeight, maxWeight);
+        this.type = type;
+        this.rwySize = rwySize;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getRwySize() {
+        return rwySize;
+    }
+
+    public void setRwySize(int rwySize) {
+        this.rwySize = rwySize;
+    }
+    @Override
+    public String toString() {
+        return "CivilianPlane{" +
+                "type='" + type + '\'' +
+                ", rwySize=" + rwySize +
+                '}';
+    }
 }

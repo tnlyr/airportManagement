@@ -3,7 +3,6 @@ package management;
 import java.util.Scanner;
 
 public class InputValidator {
-
     public int inputInt(Scanner s){
         int number;
         while (true){
