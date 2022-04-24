@@ -29,10 +29,11 @@ public class CivilianPlane extends Airplane {
     public void setRwySize(int rwySize) {
         this.rwySize = rwySize;
     }
+
     @Override
     public String toString() {
-        return "CivilianPlane{" +
-                "type='" + type + '\'' +
+        return super.toString() +
+                "type=" + type + '\'' +
                 ", rwySize=" + rwySize +
                 '}';
     }
