@@ -22,8 +22,6 @@ public class Helicopter extends Airplane {
 
     @Override
     public String toString() {
-        return super.toString() +
-                "rotorSpeed=" + rotorSpeed +
-                '}';
+        return super.toString() + "rotorSpeed=" + rotorSpeed + '}';
     }
 }
