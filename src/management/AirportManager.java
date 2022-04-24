@@ -54,7 +54,7 @@ public class AirportManager {
         System.out.println("Airport not found.");
     }
 
-    public boolean airportExists(ArrayList<Airport> airports, String iata) {
+    public boolean airportExists(String iata, ArrayList<Airport> airports) {
         for (Airport ap : airports) {
             if (ap.getIata().equalsIgnoreCase(iata)) {
                 return true;

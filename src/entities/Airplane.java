@@ -1,7 +1,7 @@
 package entities;
 
 public abstract class Airplane {
-    private String model, id;
+    private String model, tailNumber;
     private int capacity, range, speed;
     private double emptyWeight, maxWeight;
 
@@ -9,7 +9,7 @@ public abstract class Airplane {
 
     public Airplane(String model, String id, int capacity, int range, int speed, double emptyWeight, double maxWeight) {
         this.model = model;
-        this.id = id;
+        this.tailNumber = id;
         this.capacity = capacity;
         this.range = range;
         this.speed = speed;
@@ -25,12 +25,12 @@ public abstract class Airplane {
         this.model = model;
     }
 
-    public String getId() {
-        return id;
+    public String getTailNumber() {
+        return tailNumber;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTailNumber(String tailNumber) {
+        this.tailNumber = tailNumber;
     }
 
     public int getCapacity() {
@@ -77,10 +77,10 @@ public abstract class Airplane {
     public String toString() {
         return "Airplane{" +
                 "model='" + model + '\'' +
-                ", id='" + id + '\'' +
+                ", tail number='" + tailNumber + '\'' +
                 ", capacity=" + capacity +
-                ", range=" + range +
-                ", speed=" + speed +
+                ", range=" + range + " nm" +
+                ", speed=" + speed + " kts" +
                 ", emptyWeight=" + emptyWeight +
                 ", maxWeight=" + maxWeight +
                 '}';

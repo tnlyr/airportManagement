@@ -7,8 +7,8 @@ public class Helicopter extends Airplane implements IHelicopter{
         super();
     }
 
-    public Helicopter(String model, String id, int capacity, int range, int speed, double emptyWeight, double maxWeight, int rotorSpeed) {
-        super(model, id, capacity, range, speed, emptyWeight, maxWeight);
+    public Helicopter(String model, String tailNumber, int capacity, int range, int speed, double emptyWeight, double maxWeight, int rotorSpeed) {
+        super(model, tailNumber, capacity, range, speed, emptyWeight, maxWeight);
         this.rotorSpeed = rotorSpeed;
     }
 

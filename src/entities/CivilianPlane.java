@@ -8,8 +8,8 @@ public class CivilianPlane extends Airplane {
         super();
     }
 
-    public CivilianPlane(String model, String id, int capacity, int range, int speed, double emptyWeight, double maxWeight, String type, int rwySize) {
-        super(model, id, capacity, range, speed, emptyWeight, maxWeight);
+    public CivilianPlane(String model, String tailNumber, int capacity, int range, int speed, double emptyWeight, double maxWeight, String type, int rwySize) {
+        super(model, tailNumber, capacity, range, speed, emptyWeight, maxWeight);
         this.type = type;
         this.rwySize = rwySize;
     }
