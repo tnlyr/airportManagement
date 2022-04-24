@@ -4,6 +4,7 @@ import entities.Airplane;
 import entities.CivilianPlane;
 import entities.Airport;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ public class CivilianManager {
 
     public void createPlane(Scanner s, ArrayList<Airplane> airplanes) {
         System.out.print("Enter plane tail number: ");
-        String tailNumber = s.nextLine();
+        String tailNumber = inputTailNumber(s, airplanes);
         System.out.print("Enter plane model: ");
         String model = inputValidator.validateString(s);
         System.out.print("Enter plane capacity: ");
@@ -27,7 +28,7 @@ public class CivilianManager {
         System.out.print("Enter plane max weight (in kg): ");
         double maxWeight = inputValidator.validateDouble(s);
         System.out.println("Enter plane type (1 for cargo, 2 for passenger): ");
-        int type = inputValidator.validateInt(s);
+        String type = inputPlaneType(s);
         System.out.println("Enter minimum runway length needed (in m): ");
         int minRunwayLength = inputValidator.validateInt(s);
         CivilianPlane cvPlane = new CivilianPlane(tailNumber, model, capacity, range, speed, emptyWeight, maxWeight, type, minRunwayLength);
@@ -41,12 +42,12 @@ public class CivilianManager {
         if (apMgr.airportExists(iataCode, airports)) {
             for (Airport airport : airports) {
                 if (airport.getIata().equalsIgnoreCase(iataCode)) {
-                    if (airport.getAircarftList().isEmpty()) {
+                    if (airport.getAircraftList().isEmpty()) {
                         System.out.println(iataCode + " has no airplanes to remove.");
                         return;
                     }
                     System.out.println("Airplanes at " + iataCode + ":");
-                    for (String tailNumber : airport.getAircarftList()) {
+                    for (String tailNumber : airport.getAircraftList()) {
                         for (Airplane airplane : airplanes) {
                             if (airplane.getTailNumber().equalsIgnoreCase(tailNumber)) {
                                 System.out.println(airplane.toString());
@@ -58,14 +59,14 @@ public class CivilianManager {
                 while (true) {
                     System.out.println("How many airplanes do you want to remove from " + iataCode + "? ");
                     int numToRemove = inputValidator.validateInt(s);
-                    if (numToRemove > airport.getAircarftList().size() || numToRemove <= 0) {
+                    if (numToRemove > airport.getAircraftList().size() || numToRemove <= 0) {
                         System.out.println("You can't remove more airplanes than there are in " + iataCode + ".");
                         continue;
                     }
                     while (numToRemove > 0) {
                         System.out.print("Enter tail number of airplane to remove: ");
                         String tailNumber = s.nextLine();
-                        if (airport.getAircarftList().contains(tailNumber)) {
+                        if (airport.getAircraftList().contains(tailNumber)) {
                             if (!toRemove.contains(tailNumber)) {
                                 toRemove.add(tailNumber);
                                 numToRemove--;
@@ -76,7 +77,7 @@ public class CivilianManager {
                             System.out.println("That airplane is not at " + iataCode + ".");
                         }
                     }
-                    airport.getAircarftList().removeAll(toRemove);
+                    airport.getAircraftList().removeAll(toRemove);
                     break;
                 }
                 break;
@@ -112,19 +113,69 @@ public class CivilianManager {
                 System.out.println("No airplanes added.");
                 break;
             }
-            ArrayList<Airplane> toAdd = new ArrayList<Airplane>();
+            ArrayList<String> toAdd = new ArrayList<String>();
             while (numToAdd > 0) {
                 System.out.print("Enter tail number of airplane to add: ");
-
+                String tailNumber = s.nextLine();
+                if(toAdd.contains(tailNumber)) {
+                    System.out.println("You already added that airplane.");
+                    continue;
+                }
+                if (isExisting(airplanes, tailNumber)) {
+                    if(isExisting(unmatched, tailNumber)) {
+                        toAdd.add(tailNumber);
+                        numToAdd--;
+                    }
+                    else {
+                        System.out.println("That airplane is already at an airport.");
+                    }
+                }
+                else {
+                    System.out.println("That airplane does not exist.");
+                }
             }
+            addToAirport(s, toAdd, cvPlanes, airports);
+            break;
+        }
+    }
 
+    public void addToAirport(Scanner s, ArrayList<String> planeId, ArrayList<CivilianPlane> airplanes, ArrayList<Airport> airports) {
+        System.out.print("Enter IATA code of airport to add to: ");
+        String iataCode = s.nextLine();
+        if (apMgr.airportExists(iataCode, airports)) {
+            for (Airport airport : airports) {
+                if (airport.getIata().equalsIgnoreCase(iataCode)) {
+                    for (String tailNumber : planeId) {
+                        for (CivilianPlane plane : airplanes) {
+                            if (plane.getTailNumber().equalsIgnoreCase(tailNumber)) {
+                                if (airport.getMaxAircraft() > airport.getAircraftList().size()) {
+                                    if (airport.getRwylength() >= plane.getRwySize()) {
+                                        airport.getAircraftList().add(tailNumber);
+                                    }
+                                    else {
+                                        System.out.println(iataCode + " does not have enough runway length.");
+                                    }
+                                }
+                                else {
+                                    System.out.println(iataCode + " does not have enough space for more aircraft.");
+                                }
+                            }
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+        else {
+            System.out.println("That airport does not exist.");
         }
     }
 
     public ArrayList<Airplane> listMatched(ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
         ArrayList<Airplane> matched = new ArrayList<Airplane>();
         for (Airport airport : airports) {
-            for (String tailNumber : airport.getAircarftList()) {
+            for (String tailNumber : airport.getAircraftList()) {
                 for (Airplane airplane : airplanes) {
                     if (airplane.getTailNumber().equalsIgnoreCase(tailNumber)) {
                         matched.add(airplane);
@@ -147,10 +198,72 @@ public class CivilianManager {
         return unmatched;
     }
 
+    public boolean isExisting(ArrayList<Airplane> airplanes, String tailNumber) {
+        for (Airplane airplane : airplanes) {
+            if (airplane.getTailNumber().equalsIgnoreCase(tailNumber)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public void displayById(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+        System.out.println("Enter airport IATA code to display aircraft at: ");
+        String iata = s.nextLine();
+        if (apMgr.airportExists(iata, airports)) {
+            for (Airport airport : airports) {
+                if (airport.getIata().equalsIgnoreCase(iata)) {
+                    for (Airplane airplane : airplanes) {
+                        if (airport.getAircraftList().contains(airplane.getTailNumber())) {
+                            System.out.println(airplane.toString());
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            System.out.println("That airport does not exist.");
+        }
+    }
 
+    public String inputPlaneType(Scanner s) {
+        String planeType = "";
+        while (true) {
+            planeType = s.nextLine();
+            System.out.println("Please enter 1 or 2.");
+            if (planeType.equals("1")) {
+                planeType = "Cargo";
+            }
+            else if (planeType.equals("2")) {
+                planeType = "Passenger";
+            }
+            else {
+                System.out.println("Please enter 1 or 2.");
+                continue;
+            }
+            return planeType;
+        }
+    }
 
+    public String inputTailNumber(Scanner s, ArrayList<Airplane> airplanes) {
+        String planeId = "";
+        while (true) {
+            System.out.println("Enter plane ID: ");
+            planeId = s.nextLine();
+            if (isExisting(airplanes, planeId)) {
+                System.out.println("That plane ID already exists.");
+            }
+            else {
+                return planeId;
+            }
+        }
+    }
 
-
-
+    public void listAllAirplanes(ArrayList<Airplane> airplanes) {
+        for (Airplane airplane : airplanes) {
+            if (airplane instanceof CivilianPlane) {
+                System.out.println(airplane.toString());
+            }
+        }
+    }
 }

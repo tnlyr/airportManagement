@@ -59,11 +59,11 @@ public class Airport {
         this.maxHelicopter = maxHelicopter;
     }
 
-    public ArrayList<String> getAircarftList() {
+    public ArrayList<String> getAircraftList() {
         return aircarftList;
     }
 
-    public void setAircarftList(ArrayList<String> aircarftList) {
+    public void setAircraftList(ArrayList<String> aircarftList) {
         this.aircarftList = aircarftList;
     }
 
