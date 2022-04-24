@@ -31,8 +31,8 @@ public class InputValidator {
         String input;
         while (true) {
             input = s.nextLine();
-            if (input.length() > 50) {
-                System.out.println("The maximum length of the input is 50 characters! Please try again: ");
+            if (input.length() > 75) {
+                System.out.println("The maximum length of the input is 75 characters! Please try again: ");
                 continue;
             }
             return input;
@@ -50,5 +50,4 @@ public class InputValidator {
             return input;
         }
     }
-
 }
