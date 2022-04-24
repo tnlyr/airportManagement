@@ -1,6 +1,6 @@
 package entities;
 
-public class Helicopter extends Airplane {
+public class Helicopter extends Airplane implements IHelicopter{
     private int rotorSpeed;
 
     public Helicopter() {
