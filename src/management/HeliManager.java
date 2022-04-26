@@ -202,7 +202,6 @@ public class HeliManager {
     private String inputTailNumber(Scanner s, ArrayList<Airplane> airplanes) {
         String planeId = "";
         while (true) {
-            System.out.println("Enter plane ID: ");
             planeId = s.nextLine();
             if (isExisting(airplanes, planeId)) {
                 System.out.println("That plane ID already exists.");

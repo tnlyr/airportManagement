@@ -26,7 +26,7 @@ public class CivilianManager {
         double emptyWeight = inputValidator.validateDouble(s);
         System.out.print("Enter plane max weight (in kg): ");
         double maxWeight = inputValidator.validateDouble(s);
-        System.out.println("Enter plane type (1 for cargo, 2 for passenger): ");
+        System.out.println("Enter plane type (PAS for passenger, CAG for Cargo): ");
         String type = inputPlaneType(s);
         System.out.println("Enter minimum runway length needed (in m): ");
         int minRunwayLength = inputValidator.validateInt(s);
@@ -226,18 +226,11 @@ public class CivilianManager {
     }
 
     public String inputPlaneType(Scanner s) {
-        String planeType = "";
+        String planeType;
         while (true) {
             planeType = s.nextLine();
-            System.out.println("Please enter 1 or 2.");
-            if (planeType.equals("1")) {
-                planeType = "Cargo";
-            }
-            else if (planeType.equals("2")) {
-                planeType = "Passenger";
-            }
-            else {
-                System.out.println("Please enter 1 or 2.");
+            if (!planeType.matches("(PAS|CAG|pas|cag)")) {
+                System.out.print("Enter plane type (PAS (Passenger) or CAG (Cargo)): ");
                 continue;
             }
             return planeType;
@@ -247,7 +240,6 @@ public class CivilianManager {
     public String inputTailNumber(Scanner s, ArrayList<Airplane> airplanes) {
         String planeId = "";
         while (true) {
-            System.out.println("Enter plane ID: ");
             planeId = s.nextLine();
             if (isExisting(airplanes, planeId)) {
                 System.out.println("That plane ID already exists.");

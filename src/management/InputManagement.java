@@ -18,7 +18,7 @@ public class InputManagement {
             System.out.println("1. Airport");
             System.out.println("2. Civilian plane");
             System.out.println("3. Helicopter");
-            System.out.println("0. Back to main menu");
+            System.out.println("Back to main menu");
             System.out.print("Your choice: ");
             int choice = inputValidator.validateInt(s);
             switch (choice) {
@@ -34,8 +34,6 @@ public class InputManagement {
                     System.out.println("----------= Create new helicopter =----------");
                     heliMgr.createHeli(s, airplanes);
                     break;
-                case 0:
-                    return;
                 default:
                     return;
             }
@@ -48,7 +46,7 @@ public class InputManagement {
             System.out.println("1. Delete airport");
             System.out.println("2. Show all airports, sorted by IATA code");
             System.out.println("3. Show selected airport information");
-            System.out.println("0. Back to main menu");
+            System.out.println("Back to main menu");
             System.out.print("Your choice: ");
             int choice = inputValidator.validateInt(s);
             switch (choice) {
@@ -64,8 +62,6 @@ public class InputManagement {
                     System.out.println("----------= Show selected airport information =----------");
                     apMgr.displaySpecifiedAirport(s, airports);
                     break;
-                case 0:
-                    return;
                 default:
                     return;
             }
@@ -79,7 +75,7 @@ public class InputManagement {
             System.out.println("1. Add airplane to airport");
             System.out.println("2. Remove airplane from airport");
             System.out.println("3. Show all airplanes");
-            System.out.println("0. Back to main menu");
+            System.out.println("Back to main menu");
             System.out.print("Your choice: ");
             int choice = inputValidator.validateInt(s);
             switch (choice) {
@@ -95,8 +91,6 @@ public class InputManagement {
                     System.out.println("----------= Show all airplanes =----------");
                     civMgr.displayById(s, airplanes, airports);
                     break;
-                case 0:
-                    return;
                 default:
                     return;
             }
@@ -109,7 +103,7 @@ public class InputManagement {
             System.out.println("1. Add helicopter to airport");
             System.out.println("2. Remove helicopter from airport");
             System.out.println("3. Show all helicopters");
-            System.out.println("0. Back to main menu");
+            System.out.println("Back to main menu");
             System.out.print("Your choice: ");
             int choice = inputValidator.validateInt(s);
             switch (choice) {
@@ -125,8 +119,6 @@ public class InputManagement {
                     System.out.println("----------= Show all helicopters =----------");
                     heliMgr.displayById(s, airplanes, airports);
                     break;
-                case 0:
-                    return;
                 default:
                     return;
             }
