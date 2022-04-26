@@ -13,11 +13,10 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         InputManagement inputManagement = new InputManagement();
-        InputValidator inputValidator = new InputValidator();
         Scanner sc = new Scanner(System.in);
 
-        ArrayList<Airport> airports = new ArrayList<>();
-        ArrayList<Airplane> airplanes = new ArrayList<>();
+        ArrayList<Airport> airports = new ArrayList<Airport>();
+        ArrayList<Airplane> airplanes = new ArrayList<Airplane>();
 
         System.out.println("----------= Main Menu =----------");
         System.out.println("1. Create new objects");
@@ -27,7 +26,7 @@ public class Main {
         System.out.println("Exit");
         System.out.println("----------------------------------");
         System.out.print("Enter your choice: ");
-        int choice = inputValidator.validateInt(sc);
+        int choice = Integer.parseInt(sc.nextLine());
         while (true) {
             switch (choice) {
                 case 1:
@@ -46,7 +45,7 @@ public class Main {
                     System.out.println("Exiting...");
                     sc.close();
                     System.exit(0);
-                    break;
+                    return;
             }
         }
     }
