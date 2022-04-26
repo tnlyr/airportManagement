@@ -1,8 +1,8 @@
 package management;
 
-import entities.Airplane;
-import entities.CivilianPlane;
-import entities.Airport;
+import objects.Airplane;
+import objects.CivilianPlane;
+import objects.Airport;
 
 import java.util.ArrayList;
 import java.util.Scanner;

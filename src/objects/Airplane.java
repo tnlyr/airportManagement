@@ -1,4 +1,4 @@
-package entities;
+package objects;
 
 public abstract class Airplane {
     private String model, tailNumber;

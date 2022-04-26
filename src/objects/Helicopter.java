@@ -1,4 +1,4 @@
-package entities;
+package objects;
 
 public class Helicopter extends Airplane implements IHelicopter{
     private int rotorSpeed;

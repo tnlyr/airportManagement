@@ -1,6 +1,6 @@
 package management;
 
-import entities.Airport;
+import objects.Airport;
 
 import java.util.ArrayList;
 import java.util.Scanner;

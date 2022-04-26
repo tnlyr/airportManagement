@@ -1,4 +1,4 @@
-package entities;
+package objects;
 
 public class CivilianPlane extends Airplane {
     private String type;
