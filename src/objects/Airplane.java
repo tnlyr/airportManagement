@@ -7,9 +7,9 @@ public abstract class Airplane {
 
     public Airplane() {}
 
-    public Airplane(String model, String id, int capacity, int range, int speed, double emptyWeight, double maxWeight) {
+    public Airplane(String model, String tailNumber, int capacity, int range, int speed, double emptyWeight, double maxWeight) {
         this.model = model;
-        this.tailNumber = id;
+        this.tailNumber = tailNumber;
         this.capacity = capacity;
         this.range = range;
         this.speed = speed;
