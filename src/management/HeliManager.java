@@ -115,6 +115,64 @@ public class HeliManager {
         }
     }
 
+    public void removefromAirport(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+        ArrayList<String> list = new ArrayList<String>();
+        System.out.println("Enter airport IATA code: ");
+        String iata = inputValidator.validateIata(s);
+        if (apMgr.airportExists(iata, airports)) {
+            for (Airport airport : airports) {
+                if (airport.getIata().equalsIgnoreCase(iata)) {
+                    if (airport.getHelicopterList().isEmpty()) {
+                        System.out.println("No helicopters assigned to " + iata + ".");
+                        return;
+                    }
+                    System.out.println("All helicopters stationed at " + iata + ":");
+                    for (String tailNumber : airport.getHelicopterList()) {
+                        for (Airplane airplane : airplanes) {
+                            if (airplane.getTailNumber().equalsIgnoreCase(tailNumber)) {
+                                System.out.println(airplane.toString());
+                                break;
+                            }
+                        }
+                    }
+                    while (true) {
+                        System.out.print("Enter number of helicopter to remove: ");
+                        int num = inputValidator.validateInt(s);
+                        if (num > airport.getHelicopterList().size() || num < 0) {
+                            System.out.println("Invalid number. Please enter a different number.");
+                            continue;
+                        }
+                        else if (num == 0) {
+                            System.out.println("No helicopters removed.");
+                            return;
+                        }
+                        while (num > 0) {
+                            System.out.print("Enter tail number of helicopter to remove: ");
+                            String tailNumber = s.nextLine();
+                            if (airport.getHelicopterList().contains(tailNumber)) {
+                                if(!list.contains(tailNumber)) {
+                                    list.add(tailNumber);
+                                    num--;
+                                }
+                                else {
+                                    System.out.println("Helicopter already removed. Please enter a different helicopter.");
+                                }
+                            } else {
+                                System.out.println("That helicopter is not at " + iata + ".");
+                            }
+                        }
+                        airport.getHelicopterList().removeAll(list);
+                        break;
+                    }
+                    break;
+                }
+            }
+        }
+        else {
+            System.out.println("Airport does not exist. Please enter a different airport.");
+        }
+    }
+
     private ArrayList<Airplane> listUnmatched(ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
         ArrayList<Airplane> list = new ArrayList<Airplane>();
         for (Airplane airplane : airplanes) {
