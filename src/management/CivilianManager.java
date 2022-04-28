@@ -26,9 +26,9 @@ public class CivilianManager {
         double emptyWeight = inputValidator.validateDouble(s);
         System.out.print("Enter plane max weight (in kg): ");
         double maxWeight = inputValidator.validateDouble(s);
-        System.out.println("Enter plane type (PAS for passenger, CAG for Cargo): ");
+        System.out.print("Enter plane type (PAS for passenger, CAG for Cargo): ");
         String type = inputPlaneType(s);
-        System.out.println("Enter minimum runway length needed (in m): ");
+        System.out.print("Enter minimum runway length needed (in m): ");
         int minRunwayLength = inputValidator.validateInt(s);
         CivilianPlane cvPlane = new CivilianPlane(model, tailNumber, capacity, range, speed, emptyWeight, maxWeight, type, minRunwayLength);
         airplanes.add(cvPlane);

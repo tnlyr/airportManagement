@@ -1,6 +1,10 @@
 package management;
 
 import main.Main;
+import management.AirportManager;
+import management.CivilianManager;
+import management.HeliManager;
+import management.InputValidator;
 import objects.Airplane;
 import objects.Airport;
 
@@ -36,7 +40,6 @@ public class InputManagement {
                     heliMgr.createHeli(s, airplanes);
                     break;
                 default:
-                    Main.main(null);
                     return;
             }
         }
@@ -65,7 +68,6 @@ public class InputManagement {
                     apMgr.displaySpecifiedAirport(s, airports);
                     break;
                 default:
-                    Main.main(null);
                     return;
             }
 
@@ -95,7 +97,6 @@ public class InputManagement {
                     civMgr.displayById(s, airplanes, airports);
                     break;
                 default:
-                    Main.main(null);
                     return;
             }
         }
@@ -124,7 +125,6 @@ public class InputManagement {
                     heliMgr.displayById(s, airplanes, airports);
                     break;
                 default:
-                    Main.main(null);
                     return;
             }
         }

@@ -1,22 +1,19 @@
 package main;
 
 import management.InputManagement;
-import management.InputValidator;
 import objects.Airplane;
 import objects.Airport;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 public class Main {
-
     public static void main(String[] args) {
 	// write your code here
         InputManagement inputManagement = new InputManagement();
         Scanner sc = new Scanner(System.in);
 
-        ArrayList<Airport> airports = new ArrayList<Airport>();
-        ArrayList<Airplane> airplanes = new ArrayList<Airplane>();
+        ArrayList<Airport> listAirports = new ArrayList<>();
+        ArrayList<Airplane> listAirplanes = new ArrayList<>();
 
         System.out.println("----------= Main Menu =----------");
         System.out.println("1. Create new objects");
@@ -30,16 +27,21 @@ public class Main {
         while (true) {
             switch (choice) {
                 case 1:
-                    inputManagement.inputData(sc, airports, airplanes);
+                    inputManagement.inputData(sc, listAirports, listAirplanes);
                     break;
                 case 2:
-                    inputManagement.airportManagementInput(sc, airports);
+                    inputManagement.airportManagementInput(sc, listAirports);
                     break;
                 case 3:
-                    inputManagement.civilianManagementInput(sc, airplanes, airports);
+                    inputManagement.civilianManagementInput(sc, listAirplanes, listAirports);
                     break;
                 case 4:
-                    inputManagement.heliManagementInput(sc, airplanes, airports);
+                    inputManagement.heliManagementInput(sc, listAirplanes, listAirports);
+                    break;
+                case 5:
+                    //System.out.println(listAirports);
+                    //System.out.println(listAirplanes);
+                    //main(args);
                     break;
                 default:
                     System.out.println("Exiting...");
