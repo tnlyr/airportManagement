@@ -3,6 +3,8 @@ package management;
 import objects.Airport;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class AirportManager {
@@ -48,10 +50,36 @@ public class AirportManager {
         for (Airport ap : airports) {
             if (ap.getIata().equalsIgnoreCase(iata)) {
                 System.out.println(ap.toString());
-                break;
+                return;
             }
         }
         System.out.println("Airport not found.");
+    }
+
+    public void sortAlphabetically(ArrayList<Airport> airports) {
+      ArrayList<Airport> temp = new ArrayList<Airport>(airports);
+        Collections.sort(temp, new Comparator<Airport>() {
+            @Override
+            public int compare(Airport o1, Airport o2) {
+                return o1.getIata().toLowerCase().compareTo(o2.getIata().toLowerCase());
+            }
+        });
+        for (Airport ap : temp) {
+            System.out.println(ap.toString());
+        }
+    }
+
+    public void sortByRunwayLength(ArrayList<Airport> airports) {
+      ArrayList<Airport> temp = new ArrayList<Airport>(airports);
+        Collections.sort(temp, new Comparator<Airport>() {
+            @Override
+            public int compare(Airport o1, Airport o2) {
+                return o1.getRwylength() - o2.getRwylength();
+            }
+        });
+        for (Airport ap : temp) {
+            System.out.println(ap.toString());
+        }
     }
 
     public boolean airportExists(String iata, ArrayList<Airport> airports) {
