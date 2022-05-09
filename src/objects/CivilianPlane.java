@@ -3,15 +3,17 @@ package objects;
 public class CivilianPlane extends Airplane {
     private String type;
     private int rwySize;
+    private static int civilianCounter = 0;
 
     public CivilianPlane() {
         super();
     }
 
-    public CivilianPlane(String model, String tailNumber, int capacity, int range, int speed, double emptyWeight, double maxWeight, String type, int rwySize) {
-        super(model, tailNumber, capacity, range, speed, emptyWeight, maxWeight);
+    public CivilianPlane(String model, String tailNumber, int capacity, int range, int speed, double weight, String type, int rwySize) {
+        super(model, tailNumber, capacity, range, speed, weight);
         this.type = type;
         this.rwySize = rwySize;
+        civilianCounter++;
     }
 
     public String getType() {

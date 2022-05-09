@@ -3,18 +3,19 @@ package objects;
 public abstract class Airplane {
     private String model, tailNumber;
     private int capacity, range, speed;
-    private double emptyWeight, maxWeight;
+    private double weight;
+    private static int airplaneCounter;
 
     public Airplane() {}
 
-    public Airplane(String model, String tailNumber, int capacity, int range, int speed, double emptyWeight, double maxWeight) {
+    public Airplane(String model, String tailNumber, int capacity, int range, int speed, double weight) {
         this.model = model;
         this.tailNumber = tailNumber;
         this.capacity = capacity;
         this.range = range;
         this.speed = speed;
-        this.emptyWeight = emptyWeight;
-        this.maxWeight = maxWeight;
+        this.weight = weight;
+        airplaneCounter++;
     }
 
     public String getModel() {
@@ -57,21 +58,14 @@ public abstract class Airplane {
         this.speed = speed;
     }
 
-    public double getEmptyWeight() {
-        return emptyWeight;
+    public double getWeight() {
+        return weight;
     }
 
-    public void setEmptyWeight(double emptyWeight) {
-        this.emptyWeight = emptyWeight;
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
-    public double getMaxWeight() {
-        return maxWeight;
-    }
-
-    public void setMaxWeight(double maxWeight) {
-        this.maxWeight = maxWeight;
-    }
 
     @Override
     public String toString() {
@@ -81,8 +75,8 @@ public abstract class Airplane {
                 ", capacity=" + capacity +
                 ", range=" + range + " nm" +
                 ", speed=" + speed + " kts" +
-                ", emptyWeight=" + emptyWeight +
-                ", maxWeight=" + maxWeight +
+                ", weight=" + weight +
+                ", =" +
                 '}';
     }
 }

@@ -10,7 +10,7 @@ public class InputValidator {
                 number = Integer.parseInt(s.nextLine());
                 return number;
             } catch (Exception e) {
-                System.out.println("Invalid input! Please try again: ");
+                System.out.print("Invalid input! Please try again: ");
             }
         }
     }
@@ -22,7 +22,7 @@ public class InputValidator {
                 number = Double.parseDouble(s.nextLine());
                 return number;
             } catch (Exception e) {
-                System.out.println("Invalid input! Please try again: ");
+                System.out.print("Invalid input! Please try again: ");
             }
         }
     }
@@ -32,7 +32,7 @@ public class InputValidator {
         while (true) {
             input = s.nextLine();
             if (input.length() > 75) {
-                System.out.println("The maximum length of the input is 75 characters! Please try again: ");
+                System.out.print("The maximum length of the input is 75 characters! Please try again: ");
                 continue;
             }
             return input;
@@ -44,7 +44,7 @@ public class InputValidator {
         while (true) {
             input = s.nextLine();
             if (input.length() != 3) {
-                System.out.println("The IATA code must be 3 characters! Please try again: ");
+                System.out.print("The IATA code must be 3 characters! Please try again: ");
                 continue;
             }
             return input;

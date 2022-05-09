@@ -22,15 +22,13 @@ public class CivilianManager {
         int range = inputValidator.validateInt(s);
         System.out.print("Enter plane cruise speed (in kts): ");
         int speed = inputValidator.validateInt(s);
-        System.out.print("Enter plane empty weight (in kg): ");
-        double emptyWeight = inputValidator.validateDouble(s);
-        System.out.print("Enter plane max weight (in kg): ");
-        double maxWeight = inputValidator.validateDouble(s);
+        System.out.print("Enter plane weight (in kg): ");
+        double weight = inputValidator.validateDouble(s);
         System.out.print("Enter plane type (PAS for passenger, CAG for Cargo): ");
         String type = inputPlaneType(s);
         System.out.print("Enter minimum runway length needed (in m): ");
         int minRunwayLength = inputValidator.validateInt(s);
-        CivilianPlane cvPlane = new CivilianPlane(model, tailNumber, capacity, range, speed, emptyWeight, maxWeight, type, minRunwayLength);
+        CivilianPlane cvPlane = new CivilianPlane(model, tailNumber, capacity, range, speed, weight, type, minRunwayLength);
         airplanes.add(cvPlane);
     }
 

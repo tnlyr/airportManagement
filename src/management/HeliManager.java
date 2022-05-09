@@ -24,12 +24,10 @@ public class HeliManager {
         System.out.print("Enter helicopter cruisng speed (in kts): ");
         int speed = inputValidator.validateInt(s);
         System.out.print("Enter helicopter empty weight (in kg): ");
-        double emptyWeight = inputValidator.validateDouble(s);
-        System.out.print("Enter helicopter max weight (in kg): ");
-        double maxWeight = inputValidator.validateDouble(s);
+        double weight = inputValidator.validateDouble(s);
         System.out.print("Enter helicopter rotor speed (in rpm): ");
         int rotorSpeed = inputValidator.validateInt(s);
-        Helicopter heli = new Helicopter(model, tailNumber, capacity, range, speed, emptyWeight, maxWeight, rotorSpeed);
+        Helicopter heli = new Helicopter(model, tailNumber, capacity, range, speed, weight, rotorSpeed);
         airplanes.add(heli);
 
     }

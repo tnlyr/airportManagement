@@ -4,9 +4,12 @@ import management.InputManagement;
 import objects.Airplane;
 import objects.Airport;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
+    final static String MY_NAME = "Lounes";
     public static void main(String[] args) {
 	// write your code here
         InputManagement inputManagement = new InputManagement();
@@ -14,6 +17,7 @@ public class Main {
 
         ArrayList<Airport> listAirports = new ArrayList<>();
         ArrayList<Airplane> listAirplanes = new ArrayList<>();
+
 
         while (true) {
 
@@ -41,10 +45,33 @@ public class Main {
                     inputManagement.heliManagementInput(sc, listAirplanes, listAirports);
                     break;
                 default:
+                    final String FILE_NAME = "output.txt";
+                    try {
+                        File file = new File(FILE_NAME);
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        FileWriter fileWriter = new FileWriter(FILE_NAME);
+                        fileWriter.write("List of airports created: " + System.lineSeparator());
+                        for (Airport airport : listAirports) {
+                            fileWriter.write(airport.toString() + System.lineSeparator());
+                        }
+                        fileWriter.write("List of airplanes created: " + System.lineSeparator());
+                        for (Airplane airplane : listAirplanes) {
+                            fileWriter.write(airplane.toString() + System.lineSeparator());
+                        }
+                        fileWriter.write("Goodbye, " + MY_NAME + "!");
+                        fileWriter.close();
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     System.out.println("Exiting...");
-                    sc.close();
                     System.exit(0);
-                    return;
+                    break;
             }
         }
     }
