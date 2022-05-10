@@ -3,7 +3,6 @@ package objects;
 public class Helicopter extends Airplane implements IHelicopter{
     private int rotorSpeed;
     private static int helicopterCount = 0;
-
     public Helicopter() {
         super();
     }

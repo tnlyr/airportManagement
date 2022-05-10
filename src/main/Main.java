@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
-    final static String MY_NAME = "Lounes";
+    static final String MY_NAME = "Lounes";
     public static void main(String[] args) {
 	// write your code here
         InputManagement inputManagement = new InputManagement();
@@ -17,7 +17,6 @@ public class Main {
 
         ArrayList<Airport> listAirports = new ArrayList<>();
         ArrayList<Airplane> listAirplanes = new ArrayList<>();
-
 
         while (true) {
 
