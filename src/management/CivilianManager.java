@@ -26,7 +26,7 @@ public class CivilianManager {
         double weight = inputValidator.validateDouble(s);
         System.out.print("Enter plane type (PAS for passenger, CAG for Cargo): ");
         String type = inputPlaneType(s);
-        System.out.print("Enter minimum runway length needed (in m): ");
+        System.out.print("Enter minimum runway length needed (in ft): ");
         int minRunwayLength = inputValidator.validateInt(s);
         CivilianPlane cvPlane = new CivilianPlane(model, tailNumber, capacity, range, speed, weight, type, minRunwayLength);
         airplanes.add(cvPlane);
@@ -36,7 +36,7 @@ public class CivilianManager {
         ArrayList<Airplane> unmatched = listUnmatched(airplanes, airports);
         ArrayList<CivilianPlane> cvPlanes = new ArrayList<CivilianPlane>();
         for (Airplane airplane : unmatched) {
-            unmatched.add((CivilianPlane) airplane);
+            cvPlanes.add((CivilianPlane) airplane);
         }
         if (cvPlanes.isEmpty()) {
             System.out.println("There are no unmatched airplanes.");

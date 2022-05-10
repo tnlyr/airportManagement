@@ -23,7 +23,7 @@ public class HeliManager {
         int range = inputValidator.validateInt(s);
         System.out.print("Enter helicopter cruisng speed (in kts): ");
         int speed = inputValidator.validateInt(s);
-        System.out.print("Enter helicopter empty weight (in kg): ");
+        System.out.print("Enter helicopter weight (in kg): ");
         double weight = inputValidator.validateDouble(s);
         System.out.print("Enter helicopter rotor speed (in rpm): ");
         int rotorSpeed = inputValidator.validateInt(s);
