@@ -19,6 +19,7 @@ public class Airport {
         this.helicopterList = helicopterList;
     }
 
+    // Getters and setters
     public String getName() {
         return name;
     }

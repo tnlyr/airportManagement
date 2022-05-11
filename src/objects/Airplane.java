@@ -18,6 +18,7 @@ public abstract class Airplane {
         airplaneCounter++;
     }
 
+    // Getters and setters
     public String getModel() {
         return model;
     }

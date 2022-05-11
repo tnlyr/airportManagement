@@ -11,7 +11,7 @@ public class CivilianManager {
     private InputValidator inputValidator = new InputValidator();
     private AirportManager apMgr = new AirportManager();
 
-    public void createPlane(Scanner s, ArrayList<Airplane> airplanes) {
+    public void createPlane(Scanner s, ArrayList<Airplane> airplanes) { // asks user for plane information and creates a plane
         System.out.print("Enter plane tail number: ");
         String tailNumber = inputTailNumber(s, airplanes);
         System.out.print("Enter plane model: ");
@@ -32,7 +32,7 @@ public class CivilianManager {
         airplanes.add(cvPlane);
     }
 
-    public void add(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+    public void add(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) { // gets list of planes to add to an airport
         ArrayList<Airplane> unmatched = listUnmatched(airplanes, airports);
         ArrayList<CivilianPlane> cvPlanes = new ArrayList<CivilianPlane>();
         for (Airplane airplane : unmatched) {
@@ -84,7 +84,7 @@ public class CivilianManager {
         }
     }
 
-    public void addToAirport(Scanner s, ArrayList<String> planeId, ArrayList<CivilianPlane> airplanes, ArrayList<Airport> airports) {
+    public void addToAirport(Scanner s, ArrayList<String> planeId, ArrayList<CivilianPlane> airplanes, ArrayList<Airport> airports) { // adds planes to an airport
         System.out.print("Enter IATA code of airport to add to: ");
         String iata = inputValidator.validateIata(s);
         if (apMgr.airportExists(iata, airports)) {
@@ -117,7 +117,7 @@ public class CivilianManager {
         }
     }
 
-    public void removefromAirport(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+    public void removefromAirport(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) { // removes planes from an airport
         ArrayList<String> toRemove = new ArrayList<String>();
         System.out.print("Enter airport IATA code: ");
         String iataCode = s.nextLine();
@@ -169,7 +169,7 @@ public class CivilianManager {
         }
     }
 
-    public ArrayList<Airplane> listMatched(ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+    public ArrayList<Airplane> listMatched(ArrayList<Airplane> airplanes, ArrayList<Airport> airports) { // lists airplanes that match a search
         ArrayList<Airplane> matched = new ArrayList<Airplane>();
         for (Airport airport : airports) {
             for (String tailNumber : airport.getAircraftList()) {
@@ -184,7 +184,7 @@ public class CivilianManager {
         return matched;
     }
 
-    public ArrayList<Airplane> listUnmatched(ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+    public ArrayList<Airplane> listUnmatched(ArrayList<Airplane> airplanes, ArrayList<Airport> airports) { // lists airplanes that don't match a search
         ArrayList<Airplane> unmatched = new ArrayList<Airplane>();
         for (Airplane airplane : airplanes) {
             if (airplane instanceof CivilianPlane) {
@@ -195,7 +195,7 @@ public class CivilianManager {
         return unmatched;
     }
 
-    public boolean isExisting(ArrayList<Airplane> airplanes, String tailNumber) {
+    public boolean isExisting(ArrayList<Airplane> airplanes, String tailNumber) { // checks if an airplane exists
         for (Airplane airplane : airplanes) {
             if (airplane.getTailNumber().equalsIgnoreCase(tailNumber)) {
                 return true;
@@ -204,7 +204,7 @@ public class CivilianManager {
         return false;
     }
 
-    public void displayById(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+    public void displayById(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) { // displays airplanes by tail number
         System.out.println("Enter airport IATA code to display aircraft at: ");
         String iata = s.nextLine();
         if (apMgr.airportExists(iata, airports)) {
@@ -223,7 +223,7 @@ public class CivilianManager {
         }
     }
 
-    public String inputPlaneType(Scanner s) {
+    public String inputPlaneType(Scanner s) {  // inputs plane type, passenger or cargo
         String planeType;
         while (true) {
             planeType = s.nextLine();
@@ -235,7 +235,7 @@ public class CivilianManager {
         }
     }
 
-    public String inputTailNumber(Scanner s, ArrayList<Airplane> airplanes) {
+    public String inputTailNumber(Scanner s, ArrayList<Airplane> airplanes) { // inputs tail number
         String planeId = "";
         while (true) {
             planeId = s.nextLine();
@@ -248,7 +248,7 @@ public class CivilianManager {
         }
     }
 
-    public void listAllAirplanes(ArrayList<Airplane> airplanes) {
+    public void listAllAirplanes(ArrayList<Airplane> airplanes) { // lists all airplanes
         for (Airplane airplane : airplanes) {
             if (airplane instanceof CivilianPlane) {
                 System.out.println(airplane.toString());

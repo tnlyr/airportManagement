@@ -12,7 +12,7 @@ public class HeliManager {
     private InputValidator inputValidator = new InputValidator();
     private AirportManager apMgr = new AirportManager();
 
-    public void createHeli(Scanner s, ArrayList<Airplane> airplanes) {
+    public void createHeli(Scanner s, ArrayList<Airplane> airplanes) { // asks user for helicopter information and creates a new helicopter
         System.out.print("Enter helicopter tail number: ");
         String tailNumber = inputTailNumber(s, airplanes);
         System.out.print("Enter helicopter model: ");
@@ -32,7 +32,7 @@ public class HeliManager {
 
     }
 
-    public void add(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+    public void add(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) { // get list of helicopter to add to airport
         ArrayList<Airplane> unmatched = listUnmatched(airplanes, airports);
         ArrayList<Helicopter> helicopters = new ArrayList<Helicopter>();
         for (Airplane airplane : unmatched) {
@@ -84,7 +84,7 @@ public class HeliManager {
         }
     }
 
-    private void addToAirport(Scanner s, ArrayList<String> list, ArrayList<Helicopter> helicopters, ArrayList<Airport> airports) {
+    private void addToAirport(Scanner s, ArrayList<String> list, ArrayList<Helicopter> helicopters, ArrayList<Airport> airports) { // add helicopters to airport
         System.out.print("Enter airport IATA code: ");
         String iata = inputValidator.validateIata(s);
         if (apMgr.airportExists(iata, airports)) {
@@ -113,7 +113,7 @@ public class HeliManager {
         }
     }
 
-    public void removefromAirport(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+    public void removefromAirport(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) { // remove airplanes from airport
         ArrayList<String> list = new ArrayList<String>();
         System.out.print("Enter airport IATA code: ");
         String iata = inputValidator.validateIata(s);
@@ -171,7 +171,7 @@ public class HeliManager {
         }
     }
 
-    private ArrayList<Airplane> listUnmatched(ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+    private ArrayList<Airplane> listUnmatched(ArrayList<Airplane> airplanes, ArrayList<Airport> airports) { //returns list of unmatched airplanes
         ArrayList<Airplane> list = new ArrayList<Airplane>();
         for (Airplane airplane : airplanes) {
             if (airplane instanceof Helicopter) {
@@ -182,7 +182,7 @@ public class HeliManager {
         return list;
     }
 
-    private ArrayList<Airplane> listMatched(ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+    private ArrayList<Airplane> listMatched(ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {  //returns list of matched airplanes
         ArrayList<Airplane> list = new ArrayList<Airplane>();
         for (Airport airport : airports) {
             for (String tailNumber : airport.getHelicopterList()) {
@@ -197,7 +197,7 @@ public class HeliManager {
         return list;
     }
 
-    private String inputTailNumber(Scanner s, ArrayList<Airplane> airplanes) {
+    private String inputTailNumber(Scanner s, ArrayList<Airplane> airplanes) { // checks if tail number is valid
         String planeId = "";
         while (true) {
             planeId = s.nextLine();
@@ -210,7 +210,7 @@ public class HeliManager {
         }
     }
 
-    private boolean isExisting(ArrayList<Airplane> airplanes, String tailNumber) {
+    private boolean isExisting(ArrayList<Airplane> airplanes, String tailNumber) { //checks if helicopter exists
         for (Airplane airplane : airplanes) {
             if (airplane.getTailNumber().equalsIgnoreCase(tailNumber)) {
                 return true;
@@ -219,7 +219,7 @@ public class HeliManager {
         return false;
     }
 
-    public void displayById(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+    public void displayById(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) { //displays helicopters by id
         System.out.println("Enter airport IATA code: ");
         String iata = inputValidator.validateIata(s);
         if (apMgr.airportExists(iata, airports)) {
@@ -238,7 +238,7 @@ public class HeliManager {
         }
     }
 
-    public void listAllHelicopters(ArrayList<Airplane> airplanes) {
+    public void listAllHelicopters(ArrayList<Airplane> airplanes) { //lists all helicopters
         for (Airplane airplane : airplanes) {
             if (airplane instanceof Helicopter) {
                 System.out.println(airplane.toString());

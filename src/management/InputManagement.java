@@ -17,7 +17,7 @@ public class InputManagement {
     private HeliManager heliMgr = new HeliManager();
     private CivilianManager civMgr = new CivilianManager();
 
-    public void inputData(Scanner s, ArrayList<Airport> airports, ArrayList<Airplane> airplanes) {
+    public void inputData(Scanner s, ArrayList<Airport> airports, ArrayList<Airplane> airplanes) { // menu to input data
         while (true) {
             System.out.println("----------= Create new object =----------");
             System.out.println("[1] Airport");
@@ -45,7 +45,7 @@ public class InputManagement {
         }
     }
 
-    public void airportManagementInput(Scanner s, ArrayList<Airport> airports) {
+    public void airportManagementInput(Scanner s, ArrayList<Airport> airports) { // menu to manage airports
         while (true) {
             System.out.println("----------= Airport management =----------");
             System.out.println("[1] Delete airport");
@@ -79,7 +79,7 @@ public class InputManagement {
         }
     }
 
-    public void civilianManagementInput(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+    public void civilianManagementInput(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) { // menu to manage airplanes
         while (true) {
             System.out.println("----------= Civilian plane management =----------");
             System.out.println("[1] Add airplane to airport");
@@ -107,7 +107,7 @@ public class InputManagement {
         }
     }
 
-    public void heliManagementInput(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
+    public void heliManagementInput(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) { // menu to manage helicopters
         while (true) {
             System.out.println("----------= Helicopter management =----------");
             System.out.println("[1] Add helicopter to airport");

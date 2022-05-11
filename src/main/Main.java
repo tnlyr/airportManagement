@@ -44,6 +44,7 @@ public class Main {
                     inputManagement.heliManagementInput(sc, listAirplanes, listAirports);
                     break;
                 default:
+                    // File IO to save data before exit
                     final String FILE_NAME = "output.txt";
                     try {
                         File file = new File(FILE_NAME);

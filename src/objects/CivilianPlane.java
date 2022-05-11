@@ -16,6 +16,7 @@ public class CivilianPlane extends Airplane {
         civilianCounter++;
     }
 
+    // Getters and setters
     public String getType() {
         return type;
     }

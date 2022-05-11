@@ -13,10 +13,13 @@ public class Helicopter extends Airplane implements IHelicopter{
         helicopterCount++;
     }
 
+    // Getters and Setters
+    @Override
     public int getRotorSpeed() {
         return rotorSpeed;
     }
 
+    @Override
     public void setRotorSpeed(int rotorSpeed) {
         this.rotorSpeed = rotorSpeed;
     }

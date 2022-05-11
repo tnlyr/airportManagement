@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class AirportManager {
     private InputValidator inputValidator = new InputValidator();
 
-    public void createAirport(Scanner s, ArrayList<Airport> airports) {
+    public void createAirport(Scanner s, ArrayList<Airport> airports) { // asks for user input for airport creation
         System.out.print("Enter airport name: ");
         String name = inputValidator.validateString(s);
         System.out.print("Enter airport's IATA code: ");
@@ -25,7 +25,7 @@ public class AirportManager {
         airports.add(airport);
     }
 
-    public void deleteAirport(Scanner s, ArrayList<Airport> airports) {
+    public void deleteAirport(Scanner s, ArrayList<Airport> airports) { // asks for IATA code for airport deletion
         System.out.print("Enter airport's IATA code: ");
         String iata = s.nextLine();
         for (int i = 0; i < airports.size(); i++) {
@@ -40,13 +40,13 @@ public class AirportManager {
         }
     }
 
-    public void displayAllAirports(ArrayList<Airport> airports) {
+    public void displayAllAirports(ArrayList<Airport> airports) { // displays all airports in the arraylist
         for (Airport ap : airports) {
             System.out.println(ap.toString());
         }
     }
 
-    public void displaySpecifiedAirport(Scanner s, ArrayList<Airport> airports) {
+    public void displaySpecifiedAirport(Scanner s, ArrayList<Airport> airports) { // asks for IATA code for to display specified airport
         System.out.print("Enter airport's IATA code: ");
         String iata = s.nextLine();
         for (Airport ap : airports) {
@@ -60,7 +60,7 @@ public class AirportManager {
         }
     }
 
-    public void sortAlphabetically(ArrayList<Airport> airports) {
+    public void sortAlphabetically(ArrayList<Airport> airports) { // sorts airports alphabetically by iata
       ArrayList<Airport> temp = new ArrayList<Airport>(airports);
         Collections.sort(temp, new Comparator<Airport>() {
             @Override
@@ -73,7 +73,7 @@ public class AirportManager {
         }
     }
 
-    public void sortByRunwayLength(ArrayList<Airport> airports) {
+    public void sortByRunwayLength(ArrayList<Airport> airports) { // sorts airports by runway length in ascending order
       ArrayList<Airport> temp = new ArrayList<Airport>(airports);
         Collections.sort(temp, new Comparator<Airport>() {
             @Override
@@ -86,7 +86,7 @@ public class AirportManager {
         }
     }
 
-    public boolean airportExists(String iata, ArrayList<Airport> airports) {
+    public boolean airportExists(String iata, ArrayList<Airport> airports) { // checks if airport exists
         for (Airport ap : airports) {
             if (ap.getIata().equalsIgnoreCase(iata)) {
                 return true;
