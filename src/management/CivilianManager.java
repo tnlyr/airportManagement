@@ -240,7 +240,7 @@ public class CivilianManager {
         while (true) {
             planeId = s.nextLine();
             if (isExisting(airplanes, planeId)) {
-                System.out.println("That plane ID already exists.");
+                System.out.println("That tail number already exists.");
             }
             else {
                 return planeId;

@@ -35,7 +35,9 @@ public class AirportManager {
                 break;
             }
         }
-        System.out.println("Airport not found.");
+        if (!airportExists(iata, airports)) {
+            System.out.println("Airport not found.");
+        }
     }
 
     public void displayAllAirports(ArrayList<Airport> airports) {
@@ -53,7 +55,9 @@ public class AirportManager {
                 return;
             }
         }
-        System.out.println("Airport not found.");
+        if (!airportExists(iata, airports)) {
+            System.out.println("Airport not found.");
+        }
     }
 
     public void sortAlphabetically(ArrayList<Airport> airports) {

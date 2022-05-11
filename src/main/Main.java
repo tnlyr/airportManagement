@@ -15,8 +15,8 @@ public class Main {
         InputManagement inputManagement = new InputManagement();
         Scanner sc = new Scanner(System.in);
 
-        ArrayList<Airport> listAirports = new ArrayList<>();
-        ArrayList<Airplane> listAirplanes = new ArrayList<>();
+        final ArrayList<Airport> listAirports = new ArrayList<>();
+        final ArrayList<Airplane> listAirplanes = new ArrayList<>();
 
         while (true) {
 
@@ -62,7 +62,7 @@ public class Main {
                         for (Airplane airplane : listAirplanes) {
                             fileWriter.write(airplane.toString() + System.lineSeparator());
                         }
-                        fileWriter.write("Goodbye, " + MY_NAME + "!");
+                        fileWriter.write(System.lineSeparator() + "Goodbye, " + MY_NAME + "!");
                         fileWriter.close();
                     }
                     catch (Exception e) {

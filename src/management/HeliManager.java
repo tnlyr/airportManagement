@@ -35,7 +35,7 @@ public class HeliManager {
     public void add(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
         ArrayList<Airplane> unmatched = listUnmatched(airplanes, airports);
         ArrayList<Helicopter> helicopters = new ArrayList<Helicopter>();
-        for (Airplane airplane : airplanes) {
+        for (Airplane airplane : unmatched) {
             helicopters.add((Helicopter) airplane); // cast to helicopter
         }
         if (helicopters.size() == 0) {
@@ -51,7 +51,7 @@ public class HeliManager {
             System.out.print("How many helicopters do you want to add? ");
             int numToAdd = inputValidator.validateInt(s);
             if (numToAdd > unmatched.size() || numToAdd < 0) {
-                System.out.println("Invalid input. Please enter a number between 0 and " + helicopters.size());
+                System.out.print("Invalid input. Please enter a number between 0 and " + helicopters.size() + ": ");
                 continue;
             }
             if (numToAdd == 0) {
@@ -63,7 +63,7 @@ public class HeliManager {
                 System.out.print("Enter helicopter tail number: ");
                 String tailNumber = inputValidator.validateString(s);
                 if (list.contains(tailNumber)) {
-                    System.out.println("Helicopter already added. Please enter a different tail number.");
+                    System.out.print("Helicopter already added. Please enter a different tail number: ");
                     continue;
                 }
                 if (isExisting(airplanes, tailNumber)) {
@@ -72,11 +72,11 @@ public class HeliManager {
                         numToAdd--;
                     }
                     else {
-                        System.out.println("Helicopter already assigned to an airport. Please enter a different tail number.");
+                        System.out.print("Helicopter already assigned to an airport. Please enter a different tail number: ");
                     }
                 }
                 else {
-                    System.out.println("Helicopter does not exist. Please enter a different tail number.");
+                    System.out.print("Helicopter does not exist. Please enter a different tail number.");
                 }
             }
             addToAirport(s, list, helicopters, airports);
@@ -85,7 +85,7 @@ public class HeliManager {
     }
 
     private void addToAirport(Scanner s, ArrayList<String> list, ArrayList<Helicopter> helicopters, ArrayList<Airport> airports) {
-        System.out.println("Enter airport IATA code: ");
+        System.out.print("Enter airport IATA code: ");
         String iata = inputValidator.validateIata(s);
         if (apMgr.airportExists(iata, airports)) {
             for (Airport airport : airports) {
@@ -115,7 +115,7 @@ public class HeliManager {
 
     public void removefromAirport(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
         ArrayList<String> list = new ArrayList<String>();
-        System.out.println("Enter airport IATA code: ");
+        System.out.print("Enter airport IATA code: ");
         String iata = inputValidator.validateIata(s);
         if (apMgr.airportExists(iata, airports)) {
             for (Airport airport : airports) {
@@ -202,7 +202,7 @@ public class HeliManager {
         while (true) {
             planeId = s.nextLine();
             if (isExisting(airplanes, planeId)) {
-                System.out.println("That plane ID already exists.");
+                System.out.println("That helicopter tail number already exists.");
             }
             else {
                 return planeId;
@@ -246,5 +246,3 @@ public class HeliManager {
         }
     }
 }
-
-

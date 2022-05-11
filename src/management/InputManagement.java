@@ -20,10 +20,10 @@ public class InputManagement {
     public void inputData(Scanner s, ArrayList<Airport> airports, ArrayList<Airplane> airplanes) {
         while (true) {
             System.out.println("----------= Create new object =----------");
-            System.out.println("1. Airport");
-            System.out.println("2. Civilian plane");
-            System.out.println("3. Helicopter");
-            System.out.println("0. Back to main menu");
+            System.out.println("[1] Airport");
+            System.out.println("[2] Civilian plane");
+            System.out.println("[3] Helicopter");
+            System.out.println("[0] Back to main menu");
             System.out.print("Your choice: ");
             int choice = inputValidator.validateInt(s);
             switch (choice) {
@@ -48,11 +48,11 @@ public class InputManagement {
     public void airportManagementInput(Scanner s, ArrayList<Airport> airports) {
         while (true) {
             System.out.println("----------= Airport management =----------");
-            System.out.println("1. Delete airport");
-            System.out.println("2. Show all airports, sorted by IATA code");
-            System.out.println("3. Show all airports, sorted by runway length");
-            System.out.println("4. Show selected airport information");
-            System.out.println("0. Back to main menu");
+            System.out.println("[1] Delete airport");
+            System.out.println("[2] Show all airports, sorted by IATA code");
+            System.out.println("[3] Show all airports, sorted by runway length");
+            System.out.println("[4] Show selected airport information");
+            System.out.println("[0] Back to main menu");
             System.out.print("Your choice: ");
             int choice = inputValidator.validateInt(s);
             switch (choice) {
@@ -82,10 +82,10 @@ public class InputManagement {
     public void civilianManagementInput(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
         while (true) {
             System.out.println("----------= Civilian plane management =----------");
-            System.out.println("1. Add airplane to airport");
-            System.out.println("2. Remove airplane from airport");
-            System.out.println("3. Show all airplanes");
-            System.out.println("0. Back to main menu");
+            System.out.println("[1] Add airplane to airport");
+            System.out.println("[2] Remove airplane from airport");
+            System.out.println("[3] Show all airplanes at selected airport");
+            System.out.println("[0] Back to main menu");
             System.out.print("Your choice: ");
             int choice = inputValidator.validateInt(s);
             switch (choice) {
@@ -110,10 +110,10 @@ public class InputManagement {
     public void heliManagementInput(Scanner s, ArrayList<Airplane> airplanes, ArrayList<Airport> airports) {
         while (true) {
             System.out.println("----------= Helicopter management =----------");
-            System.out.println("1. Add helicopter to airport");
-            System.out.println("2. Remove helicopter from airport");
-            System.out.println("3. Show all helicopters");
-            System.out.println("0. Back to main menu");
+            System.out.println("[1] Add helicopter to airport");
+            System.out.println("[2] Remove helicopter from airport");
+            System.out.println("[3] Show all helicopters at selected airport");
+            System.out.println("[0] Back to main menu");
             System.out.print("Your choice: ");
             int choice = inputValidator.validateInt(s);
             switch (choice) {
